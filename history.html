@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block title_content %}
+      Saved URLs
+    {% endblock %}
+
+{% block content_page %}
+<h2>Saved Shortened URLs</h2>
+<table>
+    <tr>
+        <th>No. </th>
+        <th> Long Url </th>
+        <th>Short url </th>
+    </tr>
+    {% for item in urls %}
+      <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.long_url}}</td>
+        <td>{{item.short_url}}</td>
+      </tr>
+    {% endfor %}
+    </table>
+    {% endblock %}

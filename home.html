@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block title_content %}
+      Home 
+    {% endblock %}
+
+{% block content_page %}
+<div style = "margin: auto; width: 300px; background-color: lightskyblue; padding: 20px ">
+<h1> Welcome to URL shortening Using Flask </h1>
+<form action = "{{ url_for('home') }}", method ='POST'><br /> 
+    <label for=""> Enter the URL:</label>
+    <input type = 'url' name = 'in_1' autocomplete="off" value = "{{ original }}"> <br /> <br />
+    <button>Shorten</button> <br /> <br />
+    
+</form>
+<form>
+    {% if shortened %}
+     <label for="">shortened url:   </label>
+     <input type = 'text' id = "short_url" value = "{{ shortened }}" readonly>
+     {% endif %}
+    <br />
+    <button onclick="myfun()">Copy</button>
+</form>
+    <script>
+        function myfun() {
+            var text = document.getElementById("short_url");
+            text.select();
+            text.setSelectionRange(0,9999);
+            navigator.clipboard.writeText(text.value);
+            alert("Copied the text: " + text.value);
+        }
+    </script>
+</div>
+    {% endblock %}
